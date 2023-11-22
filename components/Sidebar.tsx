@@ -30,7 +30,7 @@ const Sidebar = ({ children, songs }: SidebarProps) => {
                 href: "/search",
             },
         ],
-        []
+        [pathname]
     );
     return (
         <div className="flex h-full">
