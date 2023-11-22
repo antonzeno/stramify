@@ -1,5 +1,6 @@
 "use client";
 
+import FavButton from "@/components/FavButton";
 import MediaItem from "@/components/MediaItem";
 import { Song } from "@/types";
 import React from "react";
@@ -21,6 +22,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
                         <div className="flex-1">
                             <MediaItem onClick={() => {}} data={song} />
                         </div>
+                        <FavButton songId={song.id} />
                     </div>
                 );
             })}
