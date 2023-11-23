@@ -28,7 +28,7 @@ const FavContent: React.FC<FavContentProps> = ({ songs }) => {
     return (
         <div className="flex flex-col gap-y-2 w-full p-6">
             {songs.map((song) => (
-                <div className="flex items-center gap-x-4 w-full">
+                <div key={song.id} className="flex items-center gap-x-4 w-full">
                     <div className="flex-1 ">
                         <MediaItem onClick={() => onPlay(song.id)} data={song} />
                     </div>
