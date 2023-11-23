@@ -58,13 +58,13 @@ const createOrRetrieveCustomer = async ({ email, uuid }: { email: string; uuid: 
     const { data, error } = await supabaseAdmin.from("customers").select("stripe_customer_id").eq("id", uuid).single();
 
     if (error || !data?.stripe_customer_id) {
-        const customerData: { metadata: { supabaseUUID: string }; email: string } = {
+        const customerData: { metadata: { supabaseUUID: string }; email?: string } = {
             metadata: {
                 supabaseUUID: uuid,
             },
-            email: email ?? "",
         };
 
+        if (email) customerData.email = email;
         const customer = await stripe.customers.create(customerData);
         const { error: supabaseError } = await supabaseAdmin.from("customers").insert([
             {
@@ -109,14 +109,11 @@ const manageSubscriptionStatusChange = async (subscriptionId: string, customerId
         .eq("stripe_customer_id", customerId)
         .single();
 
-    if (customerError) throw customerError;
-
-    const { id: uuid } = customerData;
+    const { id: uuid } = customerData!;
 
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
         expand: ["default_payment_method"],
     });
-
     const subscriptionData: Database["public"]["Tables"]["subscriptions"]["Insert"] = {
         id: subscription.id,
         user_id: uuid,
