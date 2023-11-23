@@ -1,6 +1,7 @@
 "use client";
 import FavButton from "@/components/FavButton";
 import MediaItem from "@/components/MediaItem";
+import useOnPlay from "@/hooks/useOnPlay";
 import { useUser } from "@/hooks/useUser";
 import { Song } from "@/types";
 import { useRouter } from "next/navigation";
@@ -12,6 +13,7 @@ interface FavContentProps {
 
 const FavContent: React.FC<FavContentProps> = ({ songs }) => {
     const router = useRouter();
+    const onPlay = useOnPlay(songs);
     const { isLoading, user } = useUser();
 
     useEffect(() => {
@@ -28,7 +30,7 @@ const FavContent: React.FC<FavContentProps> = ({ songs }) => {
             {songs.map((song) => (
                 <div className="flex items-center gap-x-4 w-full">
                     <div className="flex-1 ">
-                        <MediaItem onClick={() => {}} data={song} />
+                        <MediaItem onClick={() => onPlay(song.id)} data={song} />
                     </div>
                     <FavButton songId={song.id} />
                 </div>

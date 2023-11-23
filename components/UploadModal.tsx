@@ -39,7 +39,7 @@ const UploadModal = () => {
         try {
             setIsLoading(true);
             const imageFile = values.image?.[0];
-            const songFile = values.image?.[0];
+            const songFile = values.song?.[0];
 
             if (!imageFile || !songFile || !user) {
                 toast.error("Some of the fields are missing or user is not logged in.");
