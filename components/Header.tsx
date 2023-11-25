@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
@@ -20,6 +21,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
+    const pathName = usePathname();
     const player = usePlayer();
     const router = useRouter();
     const authModal = useAuthModal();
@@ -44,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <div className="w-full mb-4 flex items-center justify-between">
                 <div className="hidden md:flex gap-x-2 items-center">
                     <button
+                        disabled={pathName === "/"}
                         onClick={() => router.back()}
                         className="rounded-full bg-black flex items-center justify-center cursor-pointer hover:opacity-75 transition"
                     >

@@ -34,7 +34,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100%-115px)]">
+        <div className="flex flex-col h-[calc(100%-165px)]">
             <div className="flex items-center justify-between px-5 pt-4">
                 <div className="inline-flex items-center gap-x-2">
                     <TbPlaylist className="text-neutral-400" size={26} />

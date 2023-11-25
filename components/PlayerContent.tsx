@@ -10,6 +10,7 @@ import Slider from "./Slider";
 import usePlayer from "@/hooks/usePlayer";
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 interface PlayerContentProps {
     song: Song;
@@ -97,9 +98,15 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
                 </div>
             </div>
             <div className="flex md:hidden col-auto w-full justify-end items-center">
+                <AiFillStepBackward
+                    onClick={onPlayPrev}
+                    size={30}
+                    className="text-neutral-400 cursor-pointer hover:text-white transition"
+                />
                 <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer" onClick={handlePlay}>
                     <Icon size={30} className="text-black" />
                 </div>
+                <AiFillStepForward onClick={onPlayNext} size={30} className="text-neutral-400 cursor-pointer hover:text-white transition" />
             </div>
 
             <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
@@ -112,13 +119,20 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
                     <Icon size={30} className="text-black" />
                 </div>
                 <AiFillStepForward onClick={onPlayNext} size={30} className="text-neutral-400 cursor-pointer hover:text-white transition" />
-            </div>
 
-            <div className="hidden md:flex w-full justify-end pr-2">
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon onClick={toggleMute} className="cursor-pointer" size={34} />
                     <Slider value={volume} onChange={(value) => setVolume(value)} />
                 </div>
+            </div>
+            <div className="hidden md:flex w-full justify-end pr-2">
+                <IoMdCloseCircleOutline
+                    onClick={() => {
+                        player.reset();
+                    }}
+                    className="cursor-pointer"
+                    size={26}
+                />
             </div>
         </div>
     );
