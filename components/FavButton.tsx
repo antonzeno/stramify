@@ -69,7 +69,7 @@ const FavButton: React.FC<FavButtonProps> = ({ songId }) => {
 
     return (
         <button className="hover:opacity-75 transition" onClick={handleFav}>
-            <Icon color={isFav ? "#22c55e" : "white"} size={25} />
+            <Icon color={isFav ? "#5d1f90" : "white"} size={25} />
         </button>
     );
 };

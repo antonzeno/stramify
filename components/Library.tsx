@@ -34,7 +34,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-[calc(100%-115px)]">
             <div className="flex items-center justify-between px-5 pt-4">
                 <div className="inline-flex items-center gap-x-2">
                     <TbPlaylist className="text-neutral-400" size={26} />
@@ -42,7 +42,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
                 </div>
                 <AiOutlinePlus onClick={onClick} size={20} className="text-neutral-400 cursor-pointer hover:text-white transition" />
             </div>
-            <div className="flex flex-col gap-y-2 mt-4 px-3">
+            <div className="flex flex-col gap-y-2 mt-4 px-3 overflow-y-auto scrollbar-hide">
                 {songs.map((item) => (
                     <MediaItem key={item.id} onClick={() => onPlay(item.id)} data={item} />
                 ))}

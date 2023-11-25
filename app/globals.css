@@ -9,3 +9,11 @@ body,
   background-color: black;
   color-scheme: dark;
 }
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; 
+}

@@ -9,6 +9,8 @@ import Library from "./Library";
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
+import Image from "next/image";
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -39,14 +41,19 @@ const Sidebar = ({ children, songs }: SidebarProps) => {
     return (
         <div className={twMerge(`flex h-full`, player.activeId && "h-[calc(100%-80px)]")}>
             <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
-                <Box>
+                <Box className="h-full">
                     <div className="flex flex-col gap-y-4 px-5 py-4">
+                        <Link
+                            href={"/"}
+                            className="flex flex-row h-auto items-center w-full gap-x-4 text-md cursor-pointer py-1 text-white"
+                        >
+                            <Image src={"/logo.png"} alt="Logo" width={32} height={32} />
+                            <p className="truncate w-full font-semibold">Streamify</p>
+                        </Link>
                         {routes.map((route) => (
                             <SidebarItem key={route.label} {...route} />
                         ))}
                     </div>
-                </Box>
-                <Box className="overflow-y-auto h-full">
                     <Library songs={songs} />
                 </Box>
             </div>

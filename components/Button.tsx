@@ -7,7 +7,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, children
         <button
             type={type}
             className={twMerge(
-                "w-full rounded-full bg-teal-600 border-transparent px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50 text-black hover:opacity-75 transition",
+                "w-full rounded-full bg-purple-600 border-transparent px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50 text-black hover:opacity-75 transition",
                 className
             )}
             disabled={disabled}

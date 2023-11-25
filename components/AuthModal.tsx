@@ -34,7 +34,7 @@ const AuthModal = () => {
                 theme="dark"
                 providers={["github"]}
                 magicLink
-                appearance={{ theme: ThemeSupa, variables: { default: { colors: { brand: "#404040", brandAccent: "#22c55e" } } } }}
+                appearance={{ theme: ThemeSupa, variables: { default: { colors: { brand: "#404040", brandAccent: "#5d1f90" } } } }}
             />
         </Modal>
     );
